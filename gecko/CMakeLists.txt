@@ -11,10 +11,15 @@
 # respectively.
 string(TOUPPER ${CONFIG_SOC_SERIES} SILABS_GECKO_DEVICE)
 
-# Get SoC series number, i.e. translate e.g. efr32bg22 -> 22
-string(SUBSTRING ${CONFIG_SOC_SERIES} 7 2 GECKO_SERIES_NUMBER)
+if(CONFIG_SOC_SERIES_BGM24)
+  set(GECKO_SERIES_NUMBER "24")
+else()
+  # Get SoC series number, i.e. translate e.g. efr32bg22 -> 22
+  string(SUBSTRING ${CONFIG_SOC_SERIES} 7 2 GECKO_SERIES_NUMBER)
+endif()
 
 set(SILABS_GECKO_PART_NUMBER ${CONFIG_SOC_PART_NUMBER})
+string(TOLOWER ${CONFIG_SOC_PART_NUMBER} SILABS_GECKO_PART_NUMBER_LWR)
 
 function(add_prebuilt_library lib_name prebuilt_path)
   add_library(${lib_name} STATIC IMPORTED GLOBAL)
@@ -65,7 +70,12 @@ if(${CONFIG_SOC_GECKO_HAS_RADIO})
     zephyr_sources(platform/radio/rail_lib/plugin/pa-conversions/pa_curves_efr32.c)
 
     # prebuilt libs
-    add_prebuilt_library(librail      gecko/platform/radio/rail_lib/autogen/librail_release/librail_efr32xg${GECKO_SERIES_NUMBER}_gcc_release.a)
+    if(CONFIG_SOC_SERIES_BGM24)
+      add_prebuilt_library(librail      gecko/platform/radio/rail_lib/autogen/librail_release/librail_module_efr32xg${GECKO_SERIES_NUMBER}_gcc_release.a)
+      add_prebuilt_library(librail_config      	gecko/platform/radio/rail_lib/autogen/librail_release/librail_config_${SILABS_GECKO_PART_NUMBER_LWR}_gcc_release.a)
+    else()
+      add_prebuilt_library(librail      gecko/platform/radio/rail_lib/autogen/librail_release/librail_${GECKO_MODULE_PREFIX}efr32xg${GECKO_SERIES_NUMBER}_gcc_release.a)
+    endif()
 
     if(CONFIG_SOC_GECKO_CUSTOM_RADIO_PHY)
       zephyr_include_directories(
@@ -165,3 +175,4 @@ zephyr_sources_ifdef(CONFIG_SOC_SERIES_EFM32JG12B  Device/SiliconLabs/EFM32JG12B
 zephyr_sources_ifdef(CONFIG_SOC_SERIES_EFR32MG21   Device/SiliconLabs/EFR32MG21/Source/system_efr32mg21.c)
 zephyr_sources_ifdef(CONFIG_SOC_SERIES_EFM32PG1B   Device/SiliconLabs/EFM32PG1B/Source/system_efm32pg1b.c)
 zephyr_sources_ifdef(CONFIG_SOC_SERIES_EFR32MG24   Device/SiliconLabs/EFR32MG24/Source/system_efr32mg24.c)
+zephyr_sources_ifdef(CONFIG_SOC_SERIES_BGM24       Device/SiliconLabs/BGM24/Source/system_bgm24.c)

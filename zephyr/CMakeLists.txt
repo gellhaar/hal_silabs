@@ -4,5 +4,8 @@
 
 if(CONFIG_BT_SILABS_HCI)
   zephyr_include_directories(include)
-  zephyr_sources(src/sl_bt_ll_zephyr.c)
+  zephyr_sources(
+    src/sl_bt_ll_zephyr.c
+    src/sl_malloc_zephyr.c
+  )
 endif()
