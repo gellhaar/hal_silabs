@@ -219,7 +219,7 @@ sl_status_t sl_power_manager_init(void)
 #if !defined(SL_CATALOG_POWER_MANAGER_NO_DEEPSLEEP_PRESENT)
     // If lowest energy mode is not restricted to EM1, determine and set lowest energy mode
     #if defined(SL_CATALOG_POWER_MANAGER_PRESENT)
-      sli_sleeptimer_set_pm_em_requirement();    
+    sli_sleeptimer_set_pm_em_requirement();
     #endif
     // Set the default wake-up overhead value
     wakeup_time_config_overhead_tick = SCHEDULE_WAKEUP_DEFAULT_RESTORE_TIME_OVERHEAD_TICK;
