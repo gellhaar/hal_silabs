@@ -11,10 +11,17 @@
 # respectively.
 string(TOUPPER ${CONFIG_SOC_SERIES} SILABS_GECKO_DEVICE)
 
-# Get SoC series number, i.e. translate e.g. efr32bg22 -> 22
-string(SUBSTRING ${CONFIG_SOC_SERIES} 7 2 GECKO_SERIES_NUMBER)
+if(CONFIG_SOC_SERIES_BGM24)
+  set(GECKO_SERIES_NUMBER "24")
+  # This is a module, need some specific libraries and configuration
+  set(GECKO_MODULE "1")
+else()
+  # Get SoC series number, i.e. translate e.g. efr32bg22 -> 22
+  string(SUBSTRING ${CONFIG_SOC_SERIES} 7 2 GECKO_SERIES_NUMBER)
+endif()
 
 set(SILABS_GECKO_PART_NUMBER ${CONFIG_SOC_PART_NUMBER})
+string(TOLOWER ${CONFIG_SOC_PART_NUMBER} SILABS_GECKO_PART_NUMBER_LWR)
 
 function(add_prebuilt_library lib_name prebuilt_path)
   add_library(${lib_name} STATIC IMPORTED GLOBAL)
@@ -32,7 +39,11 @@ if(${CONFIG_SOC_GECKO_HAS_RADIO})
     )
   elseif(${CONFIG_SOC_FAMILY_SILABS_S2})
     zephyr_include_directories(
-      platform/radio/rail_lib/plugin/pa-conversions/efr32xg${GECKO_SERIES_NUMBER}/config
+      if(GECKO_MODULE)
+	platform/radio/rail_lib/plugin/pa-conversions/efr32xg${GECKO_SERIES_NUMBER}/config/module
+      else()
+	platform/radio/rail_lib/plugin/pa-conversions/efr32xg${GECKO_SERIES_NUMBER}/config
+      endif()
       platform/radio/rail_lib/chip/efr32/efr32xg2x
     )
   endif()
@@ -165,3 +176,4 @@ zephyr_sources_ifdef(CONFIG_SOC_SERIES_EFM32JG12B  Device/SiliconLabs/EFM32JG12B
 zephyr_sources_ifdef(CONFIG_SOC_SERIES_EFR32MG21   Device/SiliconLabs/EFR32MG21/Source/system_efr32mg21.c)
 zephyr_sources_ifdef(CONFIG_SOC_SERIES_EFM32PG1B   Device/SiliconLabs/EFM32PG1B/Source/system_efm32pg1b.c)
 zephyr_sources_ifdef(CONFIG_SOC_SERIES_EFR32MG24   Device/SiliconLabs/EFR32MG24/Source/system_efr32mg24.c)
+zephyr_sources_ifdef(CONFIG_SOC_SERIES_BGM24       Device/SiliconLabs/BGM24/Source/system_bgm24.c)
