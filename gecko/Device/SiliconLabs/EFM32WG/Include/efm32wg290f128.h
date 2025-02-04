@@ -60,6 +60,9 @@ typedef enum IRQn{
   MemoryManagement_IRQn = -12,              /*!< -12 Cortex-M4 Memory Management Interrupt */
   BusFault_IRQn         = -11,              /*!< -11 Cortex-M4 Bus Fault Interrupt         */
   UsageFault_IRQn       = -10,              /*!< -10 Cortex-M4 Usage Fault Interrupt       */
+#if defined(CONFIG_ARM_SECURE_FIRMWARE)
+  SecureFault_IRQn      =  -9,
+#endif
   SVCall_IRQn           = -5,               /*!< -5  Cortex-M4 SV Call Interrupt           */
   DebugMonitor_IRQn     = -4,               /*!< -4  Cortex-M4 Debug Monitor Interrupt     */
   PendSV_IRQn           = -2,               /*!< -2  Cortex-M4 Pend SV Interrupt           */
