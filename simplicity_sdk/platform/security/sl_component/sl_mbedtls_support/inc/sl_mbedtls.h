@@ -1,9 +1,9 @@
-/**************************************************************************/ /**
+/***************************************************************************//**
  * @file
- * @brief OS abstraction layer primitives for the platform/security components.
+ * @brief Silicon Laboratories platform integration for mbedTLS
  *******************************************************************************
  * # License
- * <b>Copyright 2024 Silicon Laboratories Inc. www.silabs.com</b>
+ * <b>Copyright 2020 Silicon Laboratories Inc. www.silabs.com</b>
  *******************************************************************************
  *
  * SPDX-License-Identifier: Zlib
@@ -27,31 +27,16 @@
  * 3. This notice may not be removed or altered from any source distribution.
  *
  ******************************************************************************/
+#ifndef SL_MBEDTLS_H
+#define SL_MBEDTLS_H
 
-#ifndef SLI_PSEC_OSAL_H
-#define SLI_PSEC_OSAL_H
+/**
+ * Initialize the Silicon Labs platform integration of mbedTLS.
+ *
+ * This function must be called by an application before using any mbedTLS
+ * functions. This function will make sure that the platform hooks in mbedTLS
+ * are configured to ensure correct runtime behavior.
+ */
+void sl_mbedtls_init(void);
 
-// -----------------------------------------------------------------------------
-// Includes
-
-#if defined(SLI_PSEC_CONFIG_FILE)
-  #include SLI_PSEC_CONFIG_FILE
-#endif
-
-#if defined (SL_COMPONENT_CATALOG_PRESENT)
-  #include "sl_component_catalog.h"
-#endif
-
-#if defined(__ZEPHYR__) && defined(SL_SE_MANAGER_THREADING)
-  #include "sli_psec_osal_zephyr.h"
-  #define SLI_PSEC_THREADING
-#elif defined(SL_CATALOG_MICRIUMOS_KERNEL_PRESENT) || defined(SL_CATALOG_FREERTOS_KERNEL_PRESENT)
-// Include CMSIS RTOS2 kernel abstraction layer:
-  #include "sli_psec_osal_cmsis_rtos2.h"
-  #define SLI_PSEC_THREADING
-#else
-// Include bare metal abstraction layer:
-  #include "sli_psec_osal_baremetal.h"
-#endif
-
-#endif // SLI_PSEC_OSAL_H
+#endif // SL_MBEDTLS_H

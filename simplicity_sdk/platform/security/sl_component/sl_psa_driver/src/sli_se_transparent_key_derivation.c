@@ -1,9 +1,9 @@
-/**************************************************************************/ /**
+/***************************************************************************//**
  * @file
- * @brief OS abstraction layer primitives for the platform/security components.
+ * @brief Silicon Labs PSA Crypto Transparent Driver Key derivation functions.
  *******************************************************************************
  * # License
- * <b>Copyright 2024 Silicon Laboratories Inc. www.silabs.com</b>
+ * <b>Copyright 2020 Silicon Laboratories Inc. www.silabs.com</b>
  *******************************************************************************
  *
  * SPDX-License-Identifier: Zlib
@@ -28,30 +28,37 @@
  *
  ******************************************************************************/
 
-#ifndef SLI_PSEC_OSAL_H
-#define SLI_PSEC_OSAL_H
+#include "sli_psa_driver_features.h"
 
-// -----------------------------------------------------------------------------
-// Includes
+#if defined(SLI_MBEDTLS_DEVICE_HSE)
 
-#if defined(SLI_PSEC_CONFIG_FILE)
-  #include SLI_PSEC_CONFIG_FILE
-#endif
+#include "psa/crypto.h"
 
-#if defined (SL_COMPONENT_CATALOG_PRESENT)
-  #include "sl_component_catalog.h"
-#endif
+#include "sli_se_driver_key_derivation.h"
 
-#if defined(__ZEPHYR__) && defined(SL_SE_MANAGER_THREADING)
-  #include "sli_psec_osal_zephyr.h"
-  #define SLI_PSEC_THREADING
-#elif defined(SL_CATALOG_MICRIUMOS_KERNEL_PRESENT) || defined(SL_CATALOG_FREERTOS_KERNEL_PRESENT)
-// Include CMSIS RTOS2 kernel abstraction layer:
-  #include "sli_psec_osal_cmsis_rtos2.h"
-  #define SLI_PSEC_THREADING
-#else
-// Include bare metal abstraction layer:
-  #include "sli_psec_osal_baremetal.h"
-#endif
+//------------------------------------------------------------------------------
+// Driver entry points
 
-#endif // SLI_PSEC_OSAL_H
+psa_status_t sli_se_transparent_key_agreement(
+  psa_algorithm_t alg,
+  const psa_key_attributes_t *attributes,
+  const uint8_t *key_buffer,
+  size_t key_buffer_size,
+  const uint8_t *peer_key,
+  size_t peer_key_length,
+  uint8_t *output,
+  size_t output_size,
+  size_t *output_length)
+{
+  return sli_se_driver_key_agreement(alg,
+                                     attributes,
+                                     key_buffer,
+                                     key_buffer_size,
+                                     peer_key,
+                                     peer_key_length,
+                                     output,
+                                     output_size,
+                                     output_length);
+}
+
+#endif // SLI_MBEDTLS_DEVICE_HSE
