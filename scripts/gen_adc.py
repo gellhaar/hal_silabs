@@ -55,6 +55,17 @@ devices = {
       }
     }
   },
+  "bgm24": {
+    "bits": "platform/Device/SiliconLabs/BGM24/Include/bgm24_iadc.h",
+    "values": {
+      "SUPPLY": {
+        0: "AVDD",
+        1: "IOVDD",
+        4: "DVDD",
+        7: "DECOUPLE"
+      }
+    }
+  },
   "xg27": {
     "bits": "platform/Device/SiliconLabs/EFR32BG27/Include/efr32bg27_iadc.h",
     "values": {
