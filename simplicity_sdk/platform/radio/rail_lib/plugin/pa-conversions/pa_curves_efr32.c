@@ -31,10 +31,12 @@
  *
  ******************************************************************************/
 
+// Include *FIRST* as _SILICON_LABS_MODULE below might be defined here
+#include "em_device.h"
+
 // This entire file should never be used on FCC pre-certified modules
 #ifndef _SILICON_LABS_MODULE
 
-#include "em_device.h"
 #include "pa_conversions_efr32.h"
 
 #if defined(_SILICON_LABS_32B_SERIES_1)
