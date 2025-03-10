@@ -105,6 +105,90 @@ blobs:
     description: "Radio Abstraction Interface Library (RAIL) supporting EFR32 radio subsystem"
     doc-url: https://github.com/SiliconLabs/simplicity_sdk
 
+  # librail for simplicity_sdk (series 2 modules)
+  - path: simplicity_sdk/platform/radio/rail_lib/autogen/librail_release/librail_module_efr32xg24_gcc_release.a
+    sha256: e3c9bc12459a1ee081925ad046818bebb8099b3109cdbbaadfa6bd1c1d19dfee
+    type: lib
+    version: "2024.12.0"
+    license-path: zephyr/blobs/license/Zlib.txt
+    url: https://artifacts.silabs.net/artifactory/gsdk/objects/e3/c9/e3c9bc12459a1ee081925ad046818bebb8099b3109cdbbaadfa6bd1c1d19dfee
+    description: "Radio Abstraction Interface Library (RAIL) supporting EFR32 radio subsystem"
+    doc-url: https://github.com/SiliconLabs/simplicity_sdk
+
+  # librail configuration for simplicity_sdk (series 2 modules)
+  - path: simplicity_sdk/platform/radio/rail_lib/autogen/librail_release/librail_config_bgm240pb32vnn_gcc.a
+    sha256: e55f88759ec1cb2d03dc8b83dbfb4eaffcecebd5fec49e43312c24ffe44b32b3
+    type: lib
+    version: "2024.12.0"
+    license-path: zephyr/blobs/license/Zlib.txt
+    url: https://artifacts.silabs.net/artifactory/gsdk/objects/e5/5f/e55f88759ec1cb2d03dc8b83dbfb4eaffcecebd5fec49e43312c24ffe44b32b3
+    description: "Radio Abstraction Interface Library (RAIL) configuration supporting BGM24 radio subsystem"
+    doc-url: https://github.com/SiliconLabs/simplicity_sdk
+  - path: simplicity_sdk/platform/radio/rail_lib/autogen/librail_release/librail_config_bgm240pa22vna_gcc.a
+    sha256: 16690fcd33e6b2faf6d684c5a3dbf3be6b569aee0018bb0fde4286f66417f062
+    type: lib
+    version: "2024.12.0"
+    license-path: zephyr/blobs/license/Zlib.txt
+    url: https://artifacts.silabs.net/artifactory/gsdk/objects/16/69/16690fcd33e6b2faf6d684c5a3dbf3be6b569aee0018bb0fde4286f66417f062
+    description: "Radio Abstraction Interface Library (RAIL) configuration supporting BGM24 radio subsystem"
+    doc-url: https://github.com/SiliconLabs/simplicity_sdk
+  - path: simplicity_sdk/platform/radio/rail_lib/autogen/librail_release/librail_config_bgm240sb22vna_gcc.a
+    sha256: 4ac9163a1419b64e674931e26b4bcf53f248cc6d6246edd4c72b2b4fe046f475
+    type: lib
+    version: "2024.12.0"
+    license-path: zephyr/blobs/license/Zlib.txt
+    url: https://artifacts.silabs.net/artifactory/gsdk/objects/4a/c9/4ac9163a1419b64e674931e26b4bcf53f248cc6d6246edd4c72b2b4fe046f475
+    description: "Radio Abstraction Interface Library (RAIL) configuration supporting BGM24 radio subsystem"
+    doc-url: https://github.com/SiliconLabs/simplicity_sdk
+  - path: simplicity_sdk/platform/radio/rail_lib/autogen/librail_release/librail_config_bgm240sa22vna_gcc.a
+    sha256: 3cdeff226fe91493bdea9c35e1e7fd2afbff11e368e16791927687f1a7d02b35
+    type: lib
+    version: "2024.12.0"
+    license-path: zephyr/blobs/license/Zlib.txt
+    url: https://artifacts.silabs.net/artifactory/gsdk/objects/3c/de/3cdeff226fe91493bdea9c35e1e7fd2afbff11e368e16791927687f1a7d02b35
+    description: "Radio Abstraction Interface Library (RAIL) configuration supporting BGM24 radio subsystem"
+    doc-url: https://github.com/SiliconLabs/simplicity_sdk
+  - path: simplicity_sdk/platform/radio/rail_lib/autogen/librail_release/librail_config_bgm240pb22vna_gcc.a
+    sha256: 21aa0e8ff16247d965c98adad9f943eef3706c169d933872b48a1135356a4e78
+    type: lib
+    version: "2024.12.0"
+    license-path: zephyr/blobs/license/Zlib.txt
+    url: https://artifacts.silabs.net/artifactory/gsdk/objects/21/aa/21aa0e8ff16247d965c98adad9f943eef3706c169d933872b48a1135356a4e78
+    description: "Radio Abstraction Interface Library (RAIL) configuration supporting BGM24 radio subsystem"
+    doc-url: https://github.com/SiliconLabs/simplicity_sdk
+  - path: simplicity_sdk/platform/radio/rail_lib/autogen/librail_release/librail_config_bgm240pa32vnn_gcc.a
+    sha256: 19948c2d55714654f3548540eaa4def6098c4674cb0661d4991d9c75d3e2fb2f
+    type: lib
+    version: "2024.12.0"
+    license-path: zephyr/blobs/license/Zlib.txt
+    url: https://artifacts.silabs.net/artifactory/gsdk/objects/19/94/19948c2d55714654f3548540eaa4def6098c4674cb0661d4991d9c75d3e2fb2f
+    description: "Radio Abstraction Interface Library (RAIL) configuration supporting BGM24 radio subsystem"
+    doc-url: https://github.com/SiliconLabs/simplicity_sdk
+  - path: simplicity_sdk/platform/radio/rail_lib/autogen/librail_release/librail_config_bgm240pa32vna_gcc.a
+    sha256: 7fc96b8d7d7df2449c764f2e4dc03a517847d71c76dcffcbe3054495f62b7d59
+    type: lib
+    version: "2024.12.0"
+    license-path: zephyr/blobs/license/Zlib.txt
+    url: https://artifacts.silabs.net/artifactory/gsdk/objects/7f/c9/7fc96b8d7d7df2449c764f2e4dc03a517847d71c76dcffcbe3054495f62b7d59
+    description: "Radio Abstraction Interface Library (RAIL) configuration supporting BGM24 radio subsystem"
+    doc-url: https://github.com/SiliconLabs/simplicity_sdk
+  - path: simplicity_sdk/platform/radio/rail_lib/autogen/librail_release/librail_config_bgm240pb32vna_gcc.a
+    sha256: dcbe3e14a92ca2b854c1b54059e2550e8913a0f7d1f3a1666a643dfd3b23089a
+    type: lib
+    version: "2024.12.0"
+    license-path: zephyr/blobs/license/Zlib.txt
+    url: https://artifacts.silabs.net/artifactory/gsdk/objects/dc/be/dcbe3e14a92ca2b854c1b54059e2550e8913a0f7d1f3a1666a643dfd3b23089a
+    description: "Radio Abstraction Interface Library (RAIL) configuration supporting BGM24 radio subsystem"
+    doc-url: https://github.com/SiliconLabs/simplicity_sdk
+  - path: simplicity_sdk/platform/radio/rail_lib/autogen/librail_release/librail_config_bgm241sd22vna_gcc.a
+    sha256: 3ef3ddc306ad00e335f6b3da2571a7c4ea7a35a879ccaead201c736de6fb012f
+    type: lib
+    version: "2024.12.0"
+    license-path: zephyr/blobs/license/Zlib.txt
+    url: https://artifacts.silabs.net/artifactory/gsdk/objects/3e/f3/3ef3ddc306ad00e335f6b3da2571a7c4ea7a35a879ccaead201c736de6fb012f
+    description: "Radio Abstraction Interface Library (RAIL) configuration supporting BGM24 radio subsystem"
+    doc-url: https://github.com/SiliconLabs/simplicity_sdk
+
   # librail for gecko_sdk (series 1)
   - path: gecko/platform/radio/rail_lib/autogen/librail_release/librail_efr32xg1_gcc_release.a
     sha256: 776969fe3e98fc1099e31fad92f74d8791ca2069e568e079ad9bce73c9096a3e

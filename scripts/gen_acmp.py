@@ -18,6 +18,9 @@ devices = {
 	"xg24": {
 		"bits": "platform/Device/SiliconLabs/EFR32MG24/Include/efr32mg24_acmp.h",
   },
+	"bgm24": {
+		"bits": "platform/Device/SiliconLabs/BGM24/Include/bgm24_acmp.h",
+  },
 	"xg27": {
 		"bits": "platform/Device/SiliconLabs/EFR32BG27/Include/efr32bg27_acmp.h",
   },
