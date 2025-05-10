@@ -1,9 +1,9 @@
-/**************************************************************************/ /**
+/***************************************************************************//**
  * @file
- * @brief OS abstraction layer primitives for the platform/security components.
+ * @brief Silicon Labs PSA Crypto Opaque Driver API Types for VSE.
  *******************************************************************************
  * # License
- * <b>Copyright 2024 Silicon Laboratories Inc. www.silabs.com</b>
+ * <b>Copyright 2022 Silicon Laboratories Inc. www.silabs.com</b>
  *******************************************************************************
  *
  * SPDX-License-Identifier: Zlib
@@ -28,30 +28,32 @@
  *
  ******************************************************************************/
 
-#ifndef SLI_PSEC_OSAL_H
-#define SLI_PSEC_OSAL_H
+#ifndef SLI_CRYPTOACC_OPAQUE_TYPES_H
+#define SLI_CRYPTOACC_OPAQUE_TYPES_H
 
-// -----------------------------------------------------------------------------
-// Includes
+#include "em_device.h"
 
-#if defined(SLI_PSEC_CONFIG_FILE)
-  #include SLI_PSEC_CONFIG_FILE
-#endif
+#define PSA_KEY_LOCATION_SLI_CRYPTOACC_OPAQUE  PSA_KEY_LOCATION_SL_CRYPTOACC_OPAQUE
 
-#if defined (SL_COMPONENT_CATALOG_PRESENT)
-  #include "sl_component_catalog.h"
-#endif
+#if defined(CRYPTOACC_PRESENT) && defined(SEPUF_PRESENT)
 
-#if defined(__ZEPHYR__) && defined(SL_SE_MANAGER_THREADING)
-  #include "sli_psec_osal_zephyr.h"
-  #define SLI_PSEC_THREADING
-#elif defined(SL_CATALOG_MICRIUMOS_KERNEL_PRESENT) || defined(SL_CATALOG_FREERTOS_KERNEL_PRESENT)
-// Include CMSIS RTOS2 kernel abstraction layer:
-  #include "sli_psec_osal_cmsis_rtos2.h"
-  #define SLI_PSEC_THREADING
-#else
-// Include bare metal abstraction layer:
-  #include "sli_psec_osal_baremetal.h"
-#endif
+#include "sli_psa_driver_features.h"
+#include "sl_psa_values.h"
 
-#endif // SLI_PSEC_OSAL_H
+#if defined(MBEDTLS_PSA_CRYPTO_BUILTIN_KEYS)
+
+/// Context struct for opaque registered keys
+typedef struct {
+  /// Version field for the struct
+  uint8_t struct_version;
+  /// Builtin key ID
+  uint8_t builtin_key_id;
+  /// Reserved space (initialise to all-zero)
+  uint8_t reserved[2];
+} sli_cryptoacc_opaque_key_context_t;
+
+#endif // MBEDTLS_PSA_CRYPTO_BUILTIN_KEYS
+
+#endif // CRYPTOACC_PRESENT && SEPUF_PRESENT
+
+#endif // SLI_CRYPTOACC_OPAQUE_TYPES_H
